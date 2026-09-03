@@ -161,6 +161,13 @@ describe('parse(invalid inputs)', () => {
     }).toThrow();
   });
 
+  it('states the same maximum length that it enforces', () => {
+    // The guard rejects length > 100, so 100 must be accepted - the error message used to say the
+    // maximum was 99, which contradicted the code beside it.
+    expect(() => parse('9'.repeat(100))).not.toThrow();
+    expect(() => parse('9'.repeat(101))).toThrow(/between 1 and 100/);
+  });
+
   it('should throw an error, when parse(undefined)', () => {
     expect(() => {
       // @ts-expect-error - We expect this to throw.
