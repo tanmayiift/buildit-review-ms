@@ -4,7 +4,7 @@ const h = m * 60;
 const d = h * 24;
 const w = d * 7;
 const y = d * 365.25;
-const mo = y / 12;
+const mo = d * 30;
 
 type Years = 'years' | 'year' | 'yrs' | 'yr' | 'y';
 type Months = 'months' | 'month' | 'mo';
